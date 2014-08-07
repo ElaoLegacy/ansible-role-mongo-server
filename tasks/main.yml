@@ -1,0 +1,31 @@
+---
+
+- name: repositories key
+  apt_key: >
+    url=http://docs.mongodb.org/10gen-gpg-key.asc
+    state=present
+  sudo: yes
+
+- name: repositories
+  apt_repository: >
+    repo="{{ item }}"
+    state=present
+    update_cache=yes
+  with_items:
+    - deb http://downloads-distro.mongodb.org/repo/debian-sysvinit dist 10gen
+  sudo: yes
+
+- name: packages
+  apt: >
+    pkg={{ item }}
+    state=present
+  with_items:
+    - mongodb-org
+  sudo: yes
+
+- name: service
+  service: >
+    name=mongod
+    state=started
+    enabled=yes
+  sudo: yes
