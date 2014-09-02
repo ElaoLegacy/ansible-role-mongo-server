@@ -10,12 +10,18 @@ Requirements
 This role only run on elao symfony standard vagrant box. See https://vagrantcloud.com/elao/symfony-standard-debian
 
 
+Role Handlers
+-------------
+
+    mongo server restart  # Restart MongoDB server
+
+
 Example Playbook
 ----------------
 
     - hosts: servers
       roles:
-         - { role: elao.mongodb-server }
+         - { role: elao.mongo-server }
 
 
 License

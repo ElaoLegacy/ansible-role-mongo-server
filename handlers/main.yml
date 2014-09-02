@@ -1,6 +1,6 @@
 ---
 
-- name: mongodb server restart
+- name: mongo server restart
   service: >
     name=mongod
     state=restarted
